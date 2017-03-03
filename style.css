@@ -1,0 +1,18 @@
+/* Propriétés de mon carré */
+#square {
+  position: absolute;
+  left: 410px;
+  top: 50px;
+  height: 500px;
+  width: 500px;
+  background-image: url(drone.jpeg);
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+/* Propriétés de mon input */
+input {
+  position: absolute;
+  left : 500px;
+  top: 500px;
+  z-index: 2;
+}

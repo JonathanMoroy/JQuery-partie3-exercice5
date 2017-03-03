@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+  <script src="jquery-2.2.4.js"></script>
+  <meta charset="utf-8">
+  <title>Exercice 5</title>
+</head>
+<body>
+  <!-- Ajout d'un formulaire contenant un carré et un input -->
+  <form>
+    <div id="square"></div>
+    <input type="text" name="command" id="command" value="" placeholder="Prenez les commandes du drone !">
+  </form>
+  <script>
+  // Fonction qui attend que le document est ready
+  $(function(){
+    // Déclaration de deux variable une pour le carré et l'autre pour l'input
+    var command = $('#command');
+    var square = $('#square');
+    // Ajout d'un keypress à mon input où un switch détermine avec les keycode des flêches directionnelles la position du carré
+    command.keypress(function(i) {
+      // variable qui récupere les touches pressées
+      var press = i.which || i.keyCode;
+      // Switch qui ajoute ou soustrait à la touche 37, 38, 39, et 40 10px
+      switch (press) {
+        case 37:
+        square.css('left', '-=10');
+        break;
+        case 38:
+        square.css('top', '-=10');
+        break;
+        case 39:
+        square.css('left', '+=10');
+        break;
+        case 40:
+        square.css('top', '+=10');
+        break;
+      }
+    });
+    // Ajout d'un keypress à mon input qui cette fois délimite les côtes maxi de déplacement de mon carré
+    command.keypress(function() {
+      // variable qui récupere la position du carré (important à placer dans la fonction de l'event sinon la position ne changera pas)
+      var position = square.offset();
+      // Conditions if else pour les côtes
+      if (position.left > 1300) {
+        square.css('left', '-350px');
+      } else if (position.top > 550) {
+        square.css('top', '-300px');
+      } else if (position.top < -300) {
+        square.css('top', '550px');
+      } else if (position.left < -350) {
+        square.css('left', '1300px');
+      }
+    });
+  });
+  </script>
+</body>
+</html>
